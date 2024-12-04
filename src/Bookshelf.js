@@ -9,7 +9,7 @@ function Bookshelf({title, books }) {
                 <ol className="books-grid">
                     {books.map((book) => {
                         return (
-                            <li key={book.title}>
+                            <li key={book.id}>
                                 <Book book={book} />
                             </li>
                         );
