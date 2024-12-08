@@ -1,6 +1,6 @@
 import Book from "./Book.js"
 
-function Bookshelf({title, books }) {
+function Bookshelf({title, books, onBookShelfChange }) {
    
     return (
         <div className="bookshelf">
@@ -10,7 +10,7 @@ function Bookshelf({title, books }) {
                     {books.map((book) => {
                         return (
                             <li key={book.id}>
-                                <Book book={book} />
+                                <Book book={book} onUpdateShelf={onBookShelfChange} />
                             </li>
                         );
                     })}                   
