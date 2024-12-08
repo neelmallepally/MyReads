@@ -12,6 +12,7 @@ function Book({ book, onUpdateShelf }) {
 
     const handleShelfChange = async (newShelf) => {
         const updatedBook = await update(book, newShelf);
+        console.log(`Update response: ${updatedBook}`);
         setSelectedShelf(newShelf);
         onUpdateShelf(book, newShelf);
     };
