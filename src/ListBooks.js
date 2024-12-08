@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 import AppTitle from "./AppTitle.js"
 import Bookshelf from "./Bookshelf.js"
 
-function ListBooks({currentlyReading, wantToRead, readBooks}){
+function ListBooks({books}){
+
+  const currentlyReading = books.filter((book) => book.shelf === "currentlyReading");
+  const wantToRead = books.filter((book) => book.shelf === "wantToRead");
+  const readBooks = books.filter((book) => book.shelf === "read");
+
     return(
         <div className="list-books">
           <AppTitle />

@@ -17,23 +17,16 @@ function App() {
     };
 
     getBooks();
-  }, []);
-
-  const currentlyReading = books.filter((book) => book.shelf === "currentlyReading");
-  const wantToRead = books.filter((book) => book.shelf === "wantToRead");
-  const readBooks = books.filter((book) => book.shelf === "read");
+  }, []); 
 
   return (
     <div className="app">
       <Routes>
         <Route exact path="/search" element={<Search></Search>}></Route>
         <Route exact path="/" element={
-          <ListBooks
-            currentlyReading={currentlyReading}
-            wantToRead={wantToRead}
-            readBooks={readBooks}>
-          </ListBooks>
-        }></Route>
+          <ListBooks books={books}></ListBooks>
+        }></Route>   
+
       </Routes>
     </div>
   );
