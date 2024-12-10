@@ -5,6 +5,7 @@ import * as BooksAPI from "./BooksAPI.js";
 import { Route, Routes } from 'react-router-dom';
 import Search from "./Search.js";
 import ListBooks from './ListBooks.js';
+import { search } from "./BooksAPI";
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
   return (
     <div className="app">
       <Routes>
-        <Route exact path="/search" element={<Search></Search>}></Route>
+        <Route exact path="/search" element={<Search search={search}></Search>}></Route>
         <Route exact path="/" element={
           <ListBooks books={books} onBookShelfChange={updateBooks}></ListBooks>
         }></Route>
