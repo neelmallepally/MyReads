@@ -1,15 +1,8 @@
 import { Link } from "react-router-dom";
 import AppTitle from "./AppTitle.js";
 import Bookshelf from "./Bookshelf.js";
-import { useState, useEffect } from "react";
 
 function ListBooks({ books, onBookShelfChange }) {
-
-  const [currentBooks, setCurrentBooks] = useState([]);
-
-  useEffect(() => {
-    setCurrentBooks(books);
-  }, [books]);
 
   const currently = books.filter((book) => book.shelf === "currentlyReading");
   const wantTo = books.filter((book) => book.shelf === "wantToRead");
