@@ -8,7 +8,9 @@ function Book({ book, onUpdateShelf }) {
     const isRead = book.shelf === "read";
     const isNone = (!isCurrentlyReading && !isWantToRead && !isRead);
 
-    const [selectedShelf, setSelectedShelf] = useState(book.shelf);
+    console.log(book.shelf ?? "none");
+
+    const [selectedShelf, setSelectedShelf] = useState(book.shelf ?? "none");
 
     const handleShelfChange = async (newShelf) => {
         const updatedBook = await update(book, newShelf);
@@ -26,7 +28,7 @@ function Book({ book, onUpdateShelf }) {
                         width: 128,
                         height: 193,
                         backgroundImage:
-                            `url(${book.imageLinks.thumbnail})`,
+                            `url(${book.imageLinks?.thumbnail})`,
                     }}
                 ></div>
                 <div className="book-shelf-changer">

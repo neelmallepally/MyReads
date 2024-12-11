@@ -5,7 +5,6 @@ import * as BooksAPI from "./BooksAPI.js";
 import { Route, Routes } from 'react-router-dom';
 import Search from "./Search.js";
 import ListBooks from './ListBooks.js';
-import { search } from "./BooksAPI";
 
 function App() {
 
@@ -21,20 +20,32 @@ function App() {
     getBooks();
   }, []);
 
-  const updateBooks = (updatedBook, newShelf) => {
+  const addOrUpdateBookShelf = (book, newShelf) => {
     setBooks((prevBooks) => {
-      return prevBooks.map((book) =>
-        book.id === updatedBook.id ? { ...book, shelf: newShelf } : book
-      )
+      // Check if the book is already in the array
+      const existingBook = prevBooks.find((b) => b.id === book.id);
+  
+      if (existingBook) {
+        // Update the shelf of the existing book
+        return prevBooks.map((b) =>
+          b.id === book.id ? { ...b, shelf: newShelf } : b
+        );
+      } else {
+        // Add the new book with the specified shelf
+        return [...prevBooks, { ...book, shelf: newShelf }];
+      }
     });
   };
+  
 
   return (
     <div className="app">
       <Routes>
-        <Route exact path="/search" element={<Search search={search}></Search>}></Route>
+        <Route exact path="/search" element={
+          <Search myBooks={books} addOrUpdateBookShelf={addOrUpdateBookShelf}></Search>
+        }></Route>
         <Route exact path="/" element={
-          <ListBooks books={books} onBookShelfChange={updateBooks}></ListBooks>
+          <ListBooks books={books} onBookShelfChange={addOrUpdateBookShelf}></ListBooks>
         }></Route>
       </Routes>
     </div>
