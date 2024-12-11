@@ -33,23 +33,23 @@ function Search({ myBooks, addOrUpdateBookShelf }) {
 
     const addBookToShelf = (book, newShelf) => {
         setResults((prevBooks) => {
-          // Check if the book is already in the array
-          const existingBook = prevBooks.find((b) => b.id === book.id);
-      
-          if (existingBook) {
-            // Update the shelf of the existing book
-            return prevBooks.map((b) =>
-              b.id === book.id ? { ...b, shelf: newShelf } : b
-            );
-          } else {
-            // Add the new book with the specified shelf
-            return [...prevBooks, { ...book, shelf: newShelf }];
-          }
+
+            const existingBook = prevBooks.find((b) => b.id === book.id);
+
+            if (existingBook) {
+
+                return prevBooks.map((b) =>
+                    b.id === book.id ? { ...b, shelf: newShelf } : b
+                );
+            } else {
+
+                return [...prevBooks, { ...book, shelf: newShelf }];
+            }
         });
 
         addOrUpdateBookShelf(book, newShelf);
 
-      };
+    };
 
     return (
         <div className="search-books">

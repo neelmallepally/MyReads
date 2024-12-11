@@ -8,13 +8,10 @@ function Book({ book, onUpdateShelf }) {
     const isRead = book.shelf === "read";
     const isNone = (!isCurrentlyReading && !isWantToRead && !isRead);
 
-    console.log(book.shelf ?? "none");
-
     const [selectedShelf, setSelectedShelf] = useState(book.shelf ?? "none");
 
     const handleShelfChange = async (newShelf) => {
         const updatedBook = await update(book, newShelf);
-        console.log(`Update response: ${updatedBook}`);
         setSelectedShelf(newShelf);
         onUpdateShelf(book, newShelf);
     };

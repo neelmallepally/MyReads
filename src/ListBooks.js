@@ -11,8 +11,6 @@ function ListBooks({ books, onBookShelfChange }) {
     setCurrentBooks(books);
   }, [books]);
 
-  console.log("current books", currentBooks);
-
   const currently = books.filter((book) => book.shelf === "currentlyReading");
   const wantTo = books.filter((book) => book.shelf === "wantToRead");
   const read = books.filter((book) => book.shelf === "read");

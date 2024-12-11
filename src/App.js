@@ -14,7 +14,6 @@ function App() {
     const getBooks = async () => {
       const response = await BooksAPI.getAll();
       setBooks(response);
-      console.log("Get books API is called and set books");
     };
 
     getBooks();

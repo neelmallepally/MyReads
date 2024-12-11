@@ -12,7 +12,6 @@ function BookshelfChanger({ book }) {
         setSelectedShelf(event.target.value);
     };
 
-    console.log(book);
     return (
         <div className="book-shelf-changer">
             <select value={selectedShelf} onChange={handleShelfChange}>
